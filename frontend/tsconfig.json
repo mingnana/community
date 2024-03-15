@@ -1,43 +1,25 @@
 {
-    "compilerOptions": {
-        "target": "ES2020",
-        "baseUrl": "./src", // 추가된 것 ./src를 절대 경로로 지정
-        "useDefineForClassFields": true,
-        "lib": ["ES2020", "DOM", "DOM.Iterable"],
-        "module": "ESNext",
-        "skipLibCheck": true,
-        "noImplicitAny": false, // testing-library/user-event type을 인식못하여 any타입 무시 비활성화
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
 
-        /* Bundler mode */
-        "moduleResolution": "bundler",
-        "allowImportingTsExtensions": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true,
-        "jsx": "react-jsx",
-        "jsxImportSource": "@emotion/react",
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
 
-        /* Linting */
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true,
-
-        // typescript 가 전역 vitest api 와 동작하도록
-        "types": ["vitest/globals"],
-
-        // 절대 경로
-        "paths": {
-            "@/*": ["./src/*"],
-            "@components/*": ["./src/components/*"],
-            "@pages/*": ["./src/pages/*"],
-            "@common/*": ["./src/components/common/*"]
-        }
-    },
-    "include": [
-        //컴파일할 폴더 입력. src의 모든파일 확인함
-        "src"
-    ],
-    "references": [{ "path": "./tsconfig.node.json" }],
-    "exclude": ["node_modules"]
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
