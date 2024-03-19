@@ -6,7 +6,7 @@ const NotFound = () => {
 		<S.NotFoundeWrapper>
 			<AiOutlineWarning size='200' />
 			<h2>404</h2>
-			<h3>page not found ㅎ</h3>
+			<h3>page not found</h3>
 		</S.NotFoundeWrapper>
 	);
 };
