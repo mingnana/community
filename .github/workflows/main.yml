@@ -1,0 +1,22 @@
+name: Toy project Build
+on:
+    pull_request:
+        branches: [develop]
+    workflow_dispatch:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '14'
+
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Run Tests
+              run: npm test
