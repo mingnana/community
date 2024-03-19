@@ -6,6 +6,9 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        env:
+          working-directory: ./frontend
+
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v4
@@ -22,6 +25,6 @@ jobs:
             - name: Build Frontend
               run: npm run build
               working-directory: ./frontend
-
+              
             - name: Run Tests
               run: npm test
