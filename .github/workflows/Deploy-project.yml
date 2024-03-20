@@ -2,22 +2,25 @@ name: deploy-project
 
 on:
     pull_request:
-        types: [opened, closed]
         branches: [develop, main]
     workflow_dispatch:
 
 jobs:
     build:
         runs-on: ubuntu-latest
-
+        env:
+            working-directory: ./frontend
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v4
 
             - name: Install Dependencies
               run: npm install
+              working-directory: ./frontend
 
             - name: Build
               run: npm build
+              working-directory: ./frontend
 
             - name: Test
               run: npm test
+              working-directory: ./frontend
