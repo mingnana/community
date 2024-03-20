@@ -2,16 +2,20 @@ name: deploy-project
 
 on:
     pull_request:
-        types: [opened, closed]
-        branches: [develop, main]
+        branches: [develop]
     workflow_dispatch:
 
 jobs:
     build:
         runs-on: ubuntu-latest
+        env:
+            working-directory: ./frontend
 
         steps:
-            - uses: actions/checkout@v2
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
             - name: Install Dependencies
               run: npm install
