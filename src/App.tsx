@@ -9,13 +9,13 @@ import './index.css';
 const queryClient = new QueryClient();
 
 function App() {
-    return (
-        <RecoilRoot>
-            <QueryClientProvider client={queryClient}>
-                <Router />
-            </QueryClientProvider>
-        </RecoilRoot>
-    );
+	return (
+		<RecoilRoot>
+			<QueryClientProvider client={queryClient}>
+				<Router />
+			</QueryClientProvider>
+		</RecoilRoot>
+	);
 }
 
 export default App;
