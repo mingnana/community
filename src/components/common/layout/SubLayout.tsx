@@ -4,9 +4,11 @@ import * as S from './style';
 
 const SubLayout = () => {
 	return (
-		<>
-			<Outlet />
-		</>
+		<S.LayoutWrapper>
+			<S.LayoutCenter>
+				<Outlet />
+			</S.LayoutCenter>
+		</S.LayoutWrapper>
 	);
 };
 
