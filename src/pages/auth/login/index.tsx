@@ -1,5 +1,11 @@
-const Login = () => {
-	return <>로그인페이지</>;
+import Login from '../../../components/features/auth/login';
+
+const LoginPage = () => {
+	return (
+		<>
+			<Login />
+		</>
+	);
 };
 
-export default Login;
+export default LoginPage;
