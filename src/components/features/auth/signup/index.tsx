@@ -5,7 +5,7 @@ import { Button, Input, message } from 'antd';
 
 import { register } from '@/utils/authRegister';
 
-import * as S from './style';
+import * as S from '../style';
 
 const Signup = () => {
 	const [email, setEmail] = useState('');
@@ -22,10 +22,10 @@ const Signup = () => {
 	return (
 		<S.SignUpContainer>
 			<S.SignUpWrap>
-				<S.DogImageWrap>
+				<S.DogImageWrap $signup={true}>
 					<img src={dogImg} alt='dog' loading='lazy' decoding='async' />
 				</S.DogImageWrap>
-				<S.SignUpFormCont>
+				<S.AuthFormWrap $sinup={true}>
 					<h3>Create an Account !</h3>
 					<S.SignUpForm onSubmit={onSubmit}>
 						<Input
@@ -44,7 +44,7 @@ const Signup = () => {
 						<Button htmlType='submit'>Register Account</Button>
 					</S.SignUpForm>
 					<Link to='/login'>Already have an account? Login!</Link>
-				</S.SignUpFormCont>
+				</S.AuthFormWrap>
 			</S.SignUpWrap>
 			{contextHolder}
 		</S.SignUpContainer>
