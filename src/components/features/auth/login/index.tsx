@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
+import dogImg from '@assets/dog_01.webp';
 import { Button } from 'antd';
 
-//----------------------------------------------------------------- Img
 import * as S from './style';
 
-//----------------------------------------------------------------- Img
-import dogImg from '/src/assets/dog_01.webp';
 const Login = () => {
 	// const REST_API_KEY = import.meta.env.VITE_REST_API_KEY;
 	// const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;

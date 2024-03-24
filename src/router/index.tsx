@@ -4,14 +4,14 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 // import { useAuth } from "../hooks/useAuth";
 
 //----------------------------------------------------------------- Component
-const ContentPage = lazy(() => import('../pages/content/index'));
-const LoginPage = lazy(() => import('../pages/auth/login/index'));
-// const NavigatePage = lazy(() => import('../pages/login/redirect'));
-const SignUpPage = lazy(() => import('../pages/auth/signup/index'));
-const Layout = lazy(() => import('../components/common/layout'));
-const SubLayout = lazy(() => import('../components/common/layout/SubLayout'));
-const Loading = lazy(() => import('../components/common/loading'));
-const NotFoundPage = lazy(() => import('../pages/notFound'));
+const ContentPage = lazy(() => import('@pages/content/index'));
+const LoginPage = lazy(() => import('@pages/auth/login/index'));
+// const NavigatePage = lazy(() => import('@pages/login/redirect'));
+const SignUpPage = lazy(() => import('@pages/auth/signup/index'));
+const Layout = lazy(() => import('@components/common/layout'));
+const SubLayout = lazy(() => import('@components/common/layout/SubLayout'));
+const Loading = lazy(() => import('@components/common/loading'));
+const NotFoundPage = lazy(() => import('@pages/notFound'));
 //----------------------------------------------------------------- Component
 
 const Router = () => {
