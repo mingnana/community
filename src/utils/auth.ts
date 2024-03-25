@@ -59,6 +59,7 @@ export async function AuthLogout(setAuthState: (state: LoginCheck) => void) {
 		const auth = getAuth(app);
 		await signOut(auth);
 		setAuthState({ token: '' });
+		localStorage.removeItem('access-token');
 
 		message.success('Logout Successful.');
 	} catch (error) {
