@@ -37,20 +37,24 @@ export function AuthLogin(
 		const auth = getAuth(app);
 
 		setPersistence(auth, browserSessionPersistence).then(async () => {
-			const { user } = await signInWithEmailAndPassword(auth, email, password);
+			try {
+				const { user } = await signInWithEmailAndPassword(auth, email, password);
 
-			// 토큰 저장
-			const token = await user.getIdToken();
-			setAuthState({ token: token });
-			localStorage.setItem('access-token', token);
+				// 토큰 저장
+				const token = await user.getIdToken();
+				setAuthState({ token: token });
+				localStorage.setItem('access-token', token);
 
-			message.success('Login Successful!');
-			setTimeout(() => {
-				navigate('/');
-			}, 1000);
+				message.success('Login Successful!');
+				setTimeout(() => {
+					navigate('/');
+				}, 1000);
+			} catch {
+				message.error('Failed to login. Please check your id/password!');
+			}
 		});
 	} catch (error) {
-		message.error('Failed to login. Please check your id/password!');
+		console.log(error);
 	}
 }
 
