@@ -2,25 +2,24 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import dogImg from '@assets/dog_01.webp';
 import { Button, Input } from 'antd';
+import { useSetRecoilState } from 'recoil';
 
-import { login } from '@/utils/authRegister';
+import { authState } from '@/recoil/atom/auth';
+import { AuthLogin } from '@/utils/auth';
 
 import * as S from '../style';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
 	const navigate = useNavigate();
+	const setAuthState = useSetRecoilState(authState);
 
-	// const REST_API_KEY = import.meta.env.VITE_REST_API_KEY;
-	// const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
-
-	// const KaKaoUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
-	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		// 비즈니스로직 분리
-		login({ email, password }, navigate);
+		AuthLogin({ email, password }, navigate, setAuthState);
 	};
 
 	return (

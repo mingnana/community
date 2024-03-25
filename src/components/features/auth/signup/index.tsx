@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import dogImg from '@assets/dog_01.webp';
 import { Button, Input, message } from 'antd';
 
-import { register } from '@/utils/authRegister';
+import { AuthRegister } from '@/utils/auth';
 
 import * as S from '../style';
 
@@ -16,7 +16,7 @@ const Signup = () => {
 	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		// 비즈니스로직 분리
-		register({ email, password }, navigate);
+		AuthRegister({ email, password }, navigate);
 	};
 
 	return (
