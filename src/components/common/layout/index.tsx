@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom';
-
-import Header from '../Header';
+import Header from '@components/common/Header';
 
 import * as S from './style';
 

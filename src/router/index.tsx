@@ -1,22 +1,22 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-// import { useAuth } from "../hooks/useAuth";
-
+import authSelector from '@/recoil/selector/authSelector';
 //----------------------------------------------------------------- Component
-const ContentPage = lazy(() => import('../pages/content/index'));
-const LoginPage = lazy(() => import('../pages/auth/login/index'));
-// const NavigatePage = lazy(() => import('../pages/login/redirect'));
-const SignUpPage = lazy(() => import('../pages/auth/signup/index'));
-const Layout = lazy(() => import('../components/common/layout'));
-const SubLayout = lazy(() => import('../components/common/layout/SubLayout'));
-const Loading = lazy(() => import('../components/common/loading'));
-const NotFoundPage = lazy(() => import('../pages/notFound'));
+const ContentPage = lazy(() => import('@pages/content/index'));
+const LoginPage = lazy(() => import('@pages/auth/login/index'));
+// const NavigatePage = lazy(() => import('@pages/login/redirect'));
+const SignUpPage = lazy(() => import('@pages/auth/signup/index'));
+const Layout = lazy(() => import('@components/common/layout'));
+const SubLayout = lazy(() => import('@components/common/layout/SubLayout'));
+const Loading = lazy(() => import('@components/common/loading'));
+const NotFoundPage = lazy(() => import('@pages/notFound'));
 //----------------------------------------------------------------- Component
 
 const Router = () => {
-	// const { user } = useAuth();
-	const loggedIn: boolean = false;
+	const auth = useRecoilValue(authSelector);
+
 	return (
 		<BrowserRouter>
 			<Suspense fallback={<Loading />}>
@@ -24,7 +24,7 @@ const Router = () => {
 					<Route element={<Layout />}>
 						<Route
 							path='/'
-							element={loggedIn ? <ContentPage /> : <Navigate to='/login' />}
+							element={auth.isLogin ? <ContentPage /> : <Navigate to='/login' />}
 						/>
 						<Route path='contents'>
 							<Route path='' element={<ContentPage />} />

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
+// 회원가입
 export const SignUpContainer = styled.div`
-	width: 60%;
+	width: 50%;
 	border-radius: 10px;
 	background-color: #fff;
 	display: flex;
@@ -13,20 +14,26 @@ export const SignUpContainer = styled.div`
 export const SignUpWrap = styled.div`
 	display: flex;
 `;
-export const DogImageWrap = styled.div`
+
+export const DogImageWrap = styled.div<{ $signup?: boolean }>`
+	overflow: ${(props) => !props.$signup && `hidden`};
+	border-radius: ${(props) => !props.$signup && `10px 10px 0 0`};
 	& img {
-		border-radius: 10px 0 0 10px;
+		border-radius: ${(props) => props.$signup && `10px 0 0 10px`};
 		display: flex;
 	}
 `;
-export const SignUpFormCont = styled.div`
+// 공통 Form container
+export const AuthFormWrap = styled.div<{ $sinup?: boolean }>`
 	min-width: 47%;
-	padding: 0 30px;
-	display: flex;
+	padding: ${(props) => (props.$sinup ? `0 30px` : `0 20px`)};
+	font-size: ${(props) => (props.$sinup ? `16px` : `14px`)};
 
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+
 	& h3 {
 		font-size: 25px;
 	}
@@ -51,5 +58,23 @@ export const SignUpForm = styled.form`
 			color: #000 !important;
 			border: none !important;
 		}
+	}
+`;
+
+// 로그인
+export const LoginContainer = styled.div`
+	width: 20%;
+	padding-bottom: 20px;
+	border-radius: 10px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 1px 50px rgba(0, 0, 0, 0.5);
+	& h3 {
+		text-align: center;
+		font-size: 25px;
+		margin: 15px 0;
 	}
 `;

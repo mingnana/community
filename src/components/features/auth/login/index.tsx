@@ -1,18 +1,25 @@
-import { Link } from 'react-router-dom';
-import { Button } from 'antd';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import dogImg from '@assets/dog_01.webp';
+import { Button, Input } from 'antd';
+import { useSetRecoilState } from 'recoil';
 
-//----------------------------------------------------------------- Img
-import * as S from './style';
+import { authState } from '@/recoil/atom/auth';
+import { AuthLogin } from '@/utils/auth';
 
-//----------------------------------------------------------------- Img
-import dogImg from '/src/assets/dog_01.webp';
+import * as S from '../style';
+
 const Login = () => {
-	// const REST_API_KEY = import.meta.env.VITE_REST_API_KEY;
-	// const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-	// const KaKaoUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-	const handleLogin = () => {
-		alert('test');
+	const navigate = useNavigate();
+	const setAuthState = useSetRecoilState(authState);
+
+	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		// 비즈니스로직 분리
+		AuthLogin({ email, password }, navigate, setAuthState);
 	};
 
 	return (
@@ -21,12 +28,25 @@ const Login = () => {
 			<S.DogImageWrap>
 				<img src={dogImg} alt='dog' loading='lazy' decoding='async' />
 			</S.DogImageWrap>
-			<S.LoginWrap>
-				<Button onClick={handleLogin}>
-					<strong>Login</strong>
-				</Button>
+			<S.AuthFormWrap>
+				<S.SignUpForm onSubmit={onSubmit}>
+					<Input
+						type='text'
+						placeholder='Email Address'
+						autoComplete='useremail'
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+					/>
+					<Input.Password
+						placeholder='Password'
+						autoComplete='current-password'
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+					/>
+					<Button htmlType='submit'>Login</Button>
+				</S.SignUpForm>
 				<Link to='/signup'>Creat an Account!</Link>
-			</S.LoginWrap>
+			</S.AuthFormWrap>
 		</S.LoginContainer>
 	);
 };
