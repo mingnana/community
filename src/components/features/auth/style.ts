@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 // 회원가입
 export const SignUpContainer = styled.div`
-	width: 60%;
+	width: 50%;
 	border-radius: 10px;
 	background-color: #fff;
 	display: flex;
@@ -63,7 +63,7 @@ export const SignUpForm = styled.form`
 
 // 로그인
 export const LoginContainer = styled.div`
-	width: 25%;
+	width: 20%;
 	padding-bottom: 20px;
 	border-radius: 10px;
 	background-color: #fff;
