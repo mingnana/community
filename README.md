@@ -45,6 +45,12 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 
 ## 📜 이슈사항
 
--   Warning: Received `true` for a non-boolean attribute `signup`.
-    -   react dom에서 해당 속성을 인지하지 못하기 때문에 나오는 이슈
-    -   prefix 사용 : styled-components를 사용할때 prefix를 필터링해서 기본이 되는 dom으로 props 전달을 방지함
+```
+- Warning: Received `true` for a non-boolean attribute `signup`.
+    - react dom에서 해당 속성을 인지하지 못하기 때문에 나오는 이슈
+    - prefix 사용 : styled-components를 사용할때 prefix를 필터링해서 기본이 되는 dom으로 props 전달을 방지함
+- React Hooks must be called in a React function component or a custom React Hook function.
+    - 컴포넌트 호출 위치에 따른 이슈
+    - react hook은 함수 컴포넌트 내부가 아닌 외부에서 호출되면 오류가 남
+    - 📌 해당 함수를 호출하는곳에서 필요한 상태를 인자로 전달하도록 해야함
+```
