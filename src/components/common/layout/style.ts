@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const LayoutWrapper = styled.div`
-	background: linear-gradient(to bottom, #4a90e2, #2965cc);
+	background: linear-gradient(to bottom, #ffbb55, #ff7f00);
+
 	height: 100vh;
 `;
 

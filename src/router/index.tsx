@@ -1,18 +1,22 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-//------------------------------------------------------------------------------- Component
-// lazy
-const ContentPage = lazy(() => import('../pages/content/index'));
-const LoginPage = lazy(() => import('../pages/auth/login/index'));
-const SignUpPage = lazy(() => import('../pages/auth/signup/index'));
-const Layout = lazy(() => import('../components/common/layout'));
-const SubLayout = lazy(() => import('../components/common/layout/SubLayout'));
-const Loading = lazy(() => import('../components/common/loading'));
-const NotFoundPage = lazy(() => import('../pages/notFound'));
-//------------------------------------------------------------------------------- Component
+import authSelector from '@/recoil/selector/authSelector';
+//----------------------------------------------------------------- Component
+const ContentPage = lazy(() => import('@pages/content/index'));
+const LoginPage = lazy(() => import('@pages/auth/login/index'));
+// const NavigatePage = lazy(() => import('@pages/login/redirect'));
+const SignUpPage = lazy(() => import('@pages/auth/signup/index'));
+const Layout = lazy(() => import('@components/common/layout'));
+const SubLayout = lazy(() => import('@components/common/layout/SubLayout'));
+const Loading = lazy(() => import('@components/common/loading'));
+const NotFoundPage = lazy(() => import('@pages/notFound'));
+//----------------------------------------------------------------- Component
 
 const Router = () => {
+	const auth = useRecoilValue(authSelector);
+
 	return (
 		<BrowserRouter>
 			<Suspense fallback={<Loading />}>
@@ -20,8 +24,7 @@ const Router = () => {
 					<Route element={<Layout />}>
 						<Route
 							path='/'
-							element={<ContentPage />}
-							// element={auth.isLogin ? <Navigate replace to='/main' /> : <LoginPage />}
+							element={auth.isLogin ? <ContentPage /> : <Navigate to='/login' />}
 						/>
 						<Route path='contents'>
 							<Route path='' element={<ContentPage />} />
