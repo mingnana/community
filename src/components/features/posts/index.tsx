@@ -1,9 +1,10 @@
-import { useEffect, useState, Suspense } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Card } from 'antd';
 
 import axiosInstance from '@/api/axiosInstance';
-import { Card } from 'antd';
+
 import * as S from './style';
-import { useNavigate } from 'react-router-dom';
 
 interface PostsProps {
 	id: number;
@@ -12,7 +13,7 @@ interface PostsProps {
 	title: string;
 }
 
-const Contents = () => {
+const Posts = () => {
 	const navigate = useNavigate();
 	const [data, setData] = useState<PostsProps[] | undefined>();
 
@@ -24,11 +25,15 @@ const Contents = () => {
 		getPost();
 	}, []);
 
-	const handleMoveDetail = (id: number) => {
-		navigate(`/posts/${id}`);
-	};
+	const HandleMoveDetail = useCallback(
+		(id: number) => {
+			navigate(`/posts/${id}`);
+		},
+		[navigate],
+	);
+
 	return (
-		<S.ContentsContainer>
+		<S.PostsContainer>
 			<h3>Dashboard</h3>
 			<S.CardContainer>
 				{data?.map((post) => (
@@ -36,15 +41,16 @@ const Contents = () => {
 						key={post.id}
 						size='small'
 						title={post.title}
-						style={{ width: 300 }}
-						onClick={handleMoveDetail(post.id)}
+						onClick={() => {
+							HandleMoveDetail(post.id);
+						}}
 					>
 						<p>{post.body}</p>
 					</Card>
 				))}
 			</S.CardContainer>
-		</S.ContentsContainer>
+		</S.PostsContainer>
 	);
 };
 
-export default Contents;
+export default Posts;

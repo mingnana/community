@@ -1,4 +1,4 @@
-import Detail from '@components/features/contents/detail';
+import Detail from '@components/features/posts/detail';
 
 const DetailPage = () => {
 	return (

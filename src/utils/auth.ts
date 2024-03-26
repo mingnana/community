@@ -21,7 +21,7 @@ export async function AuthRegister({ email, password }: SignUpProps, navigate: N
 
 		message.info('Sign-up Successful!');
 		setTimeout(() => {
-			navigate('/login');
+			navigate('/');
 		}, 500);
 	} catch (error) {
 		message.error('Failed to sign up. Please try again later.');
