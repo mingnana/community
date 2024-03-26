@@ -3,10 +3,11 @@ import styled from 'styled-components';
 // 회원가입
 export const PostsContainer = styled.div<{ $detail?: boolean }>`
 	background-color: #f8f9fc;
-	height: ${(props) => !props.$detail && 'calc(100% - 42px);'};
+	height: ${(props) => props.$detail && 'calc(100% - 42px);'};
 	& h3 {
 		padding: 20px;
 	}
+	padding-bottom: ${(props) => !props.$detail && '30px'};
 `;
 export const CardContainer = styled.div`
 	display: flex;
