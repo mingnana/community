@@ -43,7 +43,7 @@ const Signup = () => {
 						/>
 						<Button htmlType='submit'>Register Account</Button>
 					</S.SignUpForm>
-					<Link to='/login'>Already have an account? Login!</Link>
+					<Link to='/'>Already have an account? Login!</Link>
 				</S.AuthFormWrap>
 			</S.SignUpWrap>
 			{contextHolder}

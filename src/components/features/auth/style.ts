@@ -62,6 +62,13 @@ export const SignUpForm = styled.form`
 `;
 
 // 로그인
+export const LoginWrapper = styled.div`
+	background: linear-gradient(to bottom, #ffbb55, #ff7f00);
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
 export const LoginContainer = styled.div`
 	width: 20%;
 	padding-bottom: 20px;
