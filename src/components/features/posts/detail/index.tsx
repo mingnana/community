@@ -1,49 +1,52 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { message } from 'antd';
 
 import axiosInstance from '@/api/axiosInstance';
+import { PostsProps } from '@/interfaces/post';
 
 import * as S from '../style';
-
-interface PostsProps {
-	id: number;
-	userId: number;
-	body: string;
-	title: string;
-}
+//----------------------------------------------------------------- Component
+const Loading = lazy(() => import('@components/common/loading'));
+//----------------------------------------------------------------- Component
 
 const Detail = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
-	const [contentsData, setContentsData] = useState<PostsProps | undefined>();
+
+	const [post, setPost] = useState<PostsProps | undefined>();
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const getPostDetail = async () => {
 			try {
 				const res = await axiosInstance.get(`/posts/${id}`);
-				setContentsData(res.data);
+				setPost(res.data);
 			} catch {
 				message.error('게시물이 존재하지 않습니다.');
 				setTimeout(() => {
 					navigate('/');
 				}, 500);
 			}
+			setLoading(false);
 		};
 		getPostDetail();
 	}, [id, navigate]);
 
-	if (!contentsData) {
-		return;
+	if (loading || !post) {
+		return <Loading />;
 	}
+
 	return (
-		<S.ContentsContainer detail={true}>
-			<S.DetailContainer>
-				<h2>{contentsData.title}</h2>
-				<hr />
-				<p>{contentsData.body}</p>
-			</S.DetailContainer>
-		</S.ContentsContainer>
+		<Suspense fallback={<Loading />}>
+			<S.PostsContainer $detail={true}>
+				<S.DetailContainer>
+					<h2>{post.title}</h2>
+					<hr />
+					<p>{post.body}</p>
+				</S.DetailContainer>
+			</S.PostsContainer>
+		</Suspense>
 	);
 };
 
