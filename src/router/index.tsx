@@ -24,12 +24,10 @@ const Router = () => {
 		<BrowserRouter>
 			<Suspense fallback={<Loading />}>
 				<Routes>
-					<Route element={<SubLayout />}>
-						<Route
-							path='/'
-							element={!auth.isLogin ? <LoginPage /> : <Navigate to='/posts' />}
-						/>
-					</Route>
+					<Route
+						path='/'
+						element={auth.isLogin ? <Navigate to='/posts' /> : <LoginPage />}
+					/>
 					<Route element={<PrivateRoute />}>
 						<Route element={<Layout />}>
 							<Route path='posts'>
