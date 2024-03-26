@@ -1,5 +1,11 @@
-const Content = () => {
-	return <>콘텐츠페이지</>;
+import Contents from '@components/features/contents';
+
+const ContentsPage = () => {
+	return (
+		<>
+			<Contents />
+		</>
+	);
 };
 
-export default Content;
+export default ContentsPage;

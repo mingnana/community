@@ -22,7 +22,7 @@ export async function AuthRegister({ email, password }: SignUpProps, navigate: N
 		message.info('Sign-up Successful!');
 		setTimeout(() => {
 			navigate('/login');
-		}, 1000);
+		}, 500);
 	} catch (error) {
 		message.error('Failed to sign up. Please try again later.');
 	}
@@ -48,7 +48,7 @@ export function AuthLogin(
 				message.success('Login Successful!');
 				setTimeout(() => {
 					navigate('/');
-				}, 1000);
+				}, 500);
 			} catch {
 				message.error('Failed to login. Please check your id/password!');
 			}
