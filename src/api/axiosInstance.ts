@@ -1,9 +1,11 @@
 import axios from 'axios';
 
 const axiosRequestConfig = {
-	baseURL: `https://jsonplaceholder.typicode.com`,
-	timeout: 1000,
-	headers: { 'X-Custom-Header': 'foobar' },
+	baseURL: `http://localhost:8080`,
+	timeout: 5000,
+	headers: {
+		'Content-Type': 'application/json',
+	},
 };
 
 export const axiosInstance = axios.create(axiosRequestConfig);
@@ -11,11 +13,11 @@ export const axiosInstance = axios.create(axiosRequestConfig);
 //요청 인터셉터
 axiosInstance.interceptors.request.use(
 	(config) => {
-		const token = localStorage.getItem('access-token');
+		// const token = localStorage.getItem('access-token');
 
-		if (token) {
-			config.headers.Authorization = `Bearer ${token}`;
-		}
+		// if (token) {
+		// 	config.headers.Authorization = `Bearer ${token}`;
+		// }
 		return config;
 	},
 	(error) => {

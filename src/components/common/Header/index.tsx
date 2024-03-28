@@ -14,7 +14,7 @@ const Header = () => {
 	return (
 		<>
 			<S.HeaderContainer>
-				<Link to='/contents'>게시판</Link>
+				<Link to='/posts'>게시판</Link>
 				<div onClick={handleLogout}>로그아웃</div>
 			</S.HeaderContainer>
 		</>
