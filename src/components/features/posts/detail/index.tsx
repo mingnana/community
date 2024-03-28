@@ -1,7 +1,6 @@
 import { lazy, Suspense, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchPostById, usePostActions } from '@hooks/usePost';
-import useToggle from '@hooks/useToggle';
 import { Button, Input, message } from 'antd';
 
 import * as S from '../style';

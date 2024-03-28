@@ -1,10 +1,8 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { PostsProps } from '@/interfaces/post';
-import { message } from 'antd';
 
 import axiosInstance from './axiosInstance';
-import { NavigateFunction } from 'react-router';
 
 export const POST_API = {
 	getPost: async (): Promise<PostsProps[]> => {
