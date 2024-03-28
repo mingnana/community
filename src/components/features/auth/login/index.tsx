@@ -18,7 +18,7 @@ const Login = () => {
 
 	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		// 비즈니스로직 분리
+		// 비즈니스 로직 분리
 		AuthLogin({ email, password }, navigate, setAuthState);
 	};
 
