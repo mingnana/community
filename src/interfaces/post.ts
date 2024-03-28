@@ -1,8 +1,7 @@
 export interface PostsProps {
-	id: number;
-	userId: number;
-	body: string;
-	title: string;
+	id?: string;
+	desc?: string;
+	title?: string;
 }
 
 export interface QueryResponse {

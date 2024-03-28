@@ -9,6 +9,7 @@ import PrivateRoute from './privateroute';
 const PostsPage = lazy(() => import('@pages/posts/index'));
 const LoginPage = lazy(() => import('@pages/auth/login/index'));
 const DetailPage = lazy(() => import('@pages/posts/detail/index'));
+const CreatePage = lazy(() => import('@pages/posts/create/index'));
 // const NavigatePage = lazy(() => import('@pages/login/redirect'));
 const SignUpPage = lazy(() => import('@pages/auth/signup/index'));
 const Layout = lazy(() => import('@components/common/layout'));
@@ -33,6 +34,7 @@ const Router = () => {
 							<Route path='posts'>
 								<Route path='' element={<PostsPage />} />
 								<Route path=':id' element={<DetailPage />} />
+								<Route path='create' element={<CreatePage />} />
 								{/* <Route path=':id/comment' element={<CommentPage />} /> */}
 							</Route>
 						</Route>
