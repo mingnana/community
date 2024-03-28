@@ -10,8 +10,8 @@ import { AuthLogin } from '@/utils/auth';
 import * as S from '../style';
 
 const Login = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('test@test.com');
+	const [password, setPassword] = useState('123456');
 
 	const navigate = useNavigate();
 	const setAuthState = useSetRecoilState(authState);
