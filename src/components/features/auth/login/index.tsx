@@ -10,15 +10,15 @@ import { AuthLogin } from '@/utils/auth';
 import * as S from '../style';
 
 const Login = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('test@test.com');
+	const [password, setPassword] = useState('123456');
 
 	const navigate = useNavigate();
 	const setAuthState = useSetRecoilState(authState);
 
 	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		// 비즈니스로직 분리
+		// 비즈니스 로직 분리
 		AuthLogin({ email, password }, navigate, setAuthState);
 	};
 

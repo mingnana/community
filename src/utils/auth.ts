@@ -19,12 +19,12 @@ export async function AuthRegister({ email, password }: SignUpProps, navigate: N
 		const user = await createUserWithEmailAndPassword(auth, email, password);
 		console.log(user);
 
-		message.info('Sign-up Successful!');
+		message.success('SignUp Successful!😄');
 		setTimeout(() => {
 			navigate('/');
 		}, 500);
 	} catch (error) {
-		message.error('Failed to sign up. Please try again later.');
+		message.error('Failed to sign up. Please try again later.😢');
 	}
 }
 
@@ -45,12 +45,12 @@ export function AuthLogin(
 				setAuthState({ token: token });
 				localStorage.setItem('access-token', token);
 
-				message.success('Login Successful!');
+				message.success('Login Successful!😄');
 				setTimeout(() => {
 					navigate('/');
 				}, 500);
 			} catch {
-				message.error('Failed to login. Please check your id/password!');
+				message.error('Failed to login. Please check your id/password.😢');
 			}
 		});
 	} catch (error) {
@@ -65,8 +65,8 @@ export async function AuthLogout(setAuthState: (state: LoginCheck) => void) {
 		setAuthState({ token: '' });
 		localStorage.removeItem('access-token');
 
-		message.success('Logout Successful.');
+		message.success('Logout Successful!😄');
 	} catch (error) {
-		message.error('Failed to login');
+		message.error('Failed to login.😢');
 	}
 }

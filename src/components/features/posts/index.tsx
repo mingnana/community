@@ -1,9 +1,8 @@
-import { lazy, useCallback, useEffect, useState } from 'react';
+import { lazy, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card } from 'antd';
+import { Button, Card } from 'antd';
 
-import axiosInstance from '@/api/axiosInstance';
-import { PostsProps } from '@/interfaces/post';
+import { useGetPostList } from '@/api/post';
 
 import * as S from './style';
 
@@ -13,43 +12,45 @@ const Loading = lazy(() => import('@components/common/loading'));
 
 const Posts = () => {
 	const navigate = useNavigate();
-	const [post, setPost] = useState<PostsProps[] | undefined>();
-	const [loading, setLoading] = useState(true);
+	const { data, isLoading } = useGetPostList();
 
 	const HandleMoveDetail = useCallback(
-		(id: number) => {
+		(id: string | undefined) => {
 			navigate(`/posts/${id}`);
 		},
 		[navigate],
 	);
 
-	useEffect(() => {
-		const getPost = async () => {
-			const res = await axiosInstance.get('/posts');
-			setPost(res.data);
-			setLoading(false);
-		};
-		getPost();
-	}, []);
+	const HandleCreatePost = useCallback(() => {
+		navigate('/posts/create');
+	}, [navigate]);
 
-	if (loading || !post) {
+	if (isLoading || !data) {
 		return <Loading />;
 	}
 
 	return (
 		<S.PostsContainer>
-			<h3>Dashboard</h3>
+			<S.PostsTitle>
+				<h3>Dashboard</h3>
+				<Button
+					onClick={() => {
+						HandleCreatePost();
+					}}
+				>
+					Create Posts
+				</Button>
+			</S.PostsTitle>
 			<S.CardContainer>
-				{post.map((post) => (
+				{data.map((data) => (
 					<Card
-						key={post.id}
-						size='small'
-						title={post.title}
+						key={data.id}
+						title={data.title}
 						onClick={() => {
-							HandleMoveDetail(post.id);
+							HandleMoveDetail(data.id);
 						}}
 					>
-						<p>{post.body}</p>
+						<p>{data.desc}</p>
 					</Card>
 				))}
 			</S.CardContainer>
