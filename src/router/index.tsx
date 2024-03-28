@@ -25,10 +25,14 @@ const Router = () => {
 		<BrowserRouter>
 			<Suspense fallback={<Loading />}>
 				<Routes>
-					<Route
-						path='/'
-						element={auth.isLogin ? <Navigate to='/posts' /> : <LoginPage />}
-					/>
+					<Route element={<SubLayout />}>
+						<Route
+							path='/'
+							element={auth.isLogin ? <Navigate to='/posts' /> : <LoginPage />}
+						/>
+						<Route path='/signup' element={<SignUpPage />} />
+						<Route path='*' element={<NotFoundPage />} />
+					</Route>
 					<Route element={<PrivateRoute />}>
 						<Route element={<Layout />}>
 							<Route path='posts'>
@@ -37,12 +41,6 @@ const Router = () => {
 								<Route path='create' element={<CreatePage />} />
 								{/* <Route path=':id/comment' element={<CommentPage />} /> */}
 							</Route>
-						</Route>
-
-						<Route element={<SubLayout />}>
-							{/* alsdk6@test.com */}
-							<Route path='/signup' element={<SignUpPage />} />
-							<Route path='*' element={<NotFoundPage />} />
 						</Route>
 					</Route>
 				</Routes>
