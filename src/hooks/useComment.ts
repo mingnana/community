@@ -1,7 +1,4 @@
-// useComment.js
-
 import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { useDeleteComment, useGetCommentById } from '@/api/comment';
 
