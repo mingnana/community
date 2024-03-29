@@ -2,13 +2,13 @@
 @import './reset.css';
 
 #root {
-    min-height: 100vh;
+	min-height: 100vh;
 }
 button,
 a {
-    cursor: pointer;
+	cursor: pointer;
 
-    &:disabled {
-        pointer-events: none;
-    }
+	&:disabled {
+		pointer-events: none;
+	}
 }

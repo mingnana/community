@@ -1,4 +1,5 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { message } from 'antd';
 
 import { PostsProps } from '@/interfaces/post';
 
@@ -46,8 +47,16 @@ export const useCreatePost = () => {
 };
 
 export const usePutPost = (id: string = '') => {
+	const queryClient = useQueryClient();
 	const { mutate: putPost } = useMutation<PostsProps, Error, PostsProps>({
 		mutationFn: POST_API.putPost(id),
+		onSuccess: (_res, variables) => {
+			message.success('Post has been successfully modified! 😄');
+			queryClient.invalidateQueries({ queryKey: ['postId', variables.id] });
+		},
+		onError: () => {
+			message.error('Failed to delete the Comment. Please try again later. 😢');
+		},
 	});
 	return { putPost };
 };

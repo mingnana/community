@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 
 import { useDeletePost, useGetPostById, usePutPost } from '@/api/post';
+import { PostsProps } from '@/interfaces/post';
 
 export const useFetchPostById = (id: string = '') => {
 	const { data, isLoading, error } = useGetPostById(id);
@@ -29,21 +30,15 @@ export const usePostActions = (id: string = '') => {
 	}, [deletePost, id, navigate]);
 
 	const handleModifyPost = useCallback(
-		(title: string, desc: string) => {
-			try {
-				putPost({
-					title,
-					desc,
-				});
-				message.success('Post has been successfully modified! 😄');
-				setTimeout(() => {
-					navigate('/');
-				}, 500);
-			} catch (error) {
-				message.error('Failed to modify the post. Please try again later. 😢');
-			}
+		({ id, title, desc, user }: PostsProps) => {
+			putPost({
+				id,
+				title,
+				desc,
+				user,
+			});
 		},
-		[putPost, navigate],
+		[putPost],
 	);
 
 	return { handleDeletePost, handleModifyPost };
