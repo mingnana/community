@@ -1,7 +1,3 @@
-export interface ICommentInfo {
-	email?: string | null;
-}
-
 export interface CommentsProps {
 	id?: string;
 	postId?: string;

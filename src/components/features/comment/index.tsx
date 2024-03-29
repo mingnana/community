@@ -3,7 +3,7 @@ import { CiEdit } from 'react-icons/ci';
 import { IoIosAddCircle, IoIosTrash } from 'react-icons/io';
 import { useParams } from 'react-router-dom';
 import { useFetchCommentById } from '@hooks/useComment';
-import { ICommentInfo } from '@interfaces/comment';
+import { IUserInfo } from '@interfaces/auth';
 import { Input } from 'antd';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
@@ -18,7 +18,7 @@ const Comment = () => {
 	const [commentValue, setCommentValue] = useState('');
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [, setEditComment] = useState('');
-	const [user, setUser] = useState<ICommentInfo | undefined>();
+	const [user, setUser] = useState<IUserInfo | undefined>();
 	const [edit] = useState(false);
 	const { mutate } = useCreateComment();
 	const { comment, isLoading } = useFetchCommentById(id);

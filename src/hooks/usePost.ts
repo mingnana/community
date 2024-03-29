@@ -30,11 +30,12 @@ export const usePostActions = (id: string = '') => {
 	}, [deletePost, id, navigate]);
 
 	const handleModifyPost = useCallback(
-		({ id, title, desc }: PostsProps) => {
+		({ id, title, desc, user }: PostsProps) => {
 			putPost({
 				id,
 				title,
 				desc,
+				user,
 			});
 		},
 		[putPost],

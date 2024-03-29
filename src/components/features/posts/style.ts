@@ -48,18 +48,28 @@ export const DetailContainer = styled.div`
 	padding: 30px 15%;
 
 	& hr {
-		margin-top: 20px;
+		margin-top: 10px;
 	}
+`;
+export const TitleArea = styled.div`
+	background-color: #fff;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 `;
 export const DescArea = styled.div`
 	min-height: 150px;
+	background-color: #fff;
+	padding: 10px;
 `;
-export const ButtonArea = styled.div`
-	margin-top: 50px;
+
+export const ButtonArea = styled.div<{ $edit?: boolean }>`
 	display: flex;
 	gap: 10px;
 	justify-content: flex-end;
 	flex-wrap: wrap;
+	margin-top: ${(props) => (props.$edit ? '50px' : '10px')};
 `;
 export const DogImageWrap = styled.div<{ $signup?: boolean }>`
 	overflow: ${(props) => !props.$signup && `hidden`};

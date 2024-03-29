@@ -6,3 +6,7 @@ export interface SignUpProps {
 export interface LoginCheck {
 	token: string;
 }
+
+export interface IUserInfo {
+	email?: string | null;
+}
