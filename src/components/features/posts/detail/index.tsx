@@ -28,7 +28,7 @@ const Detail = () => {
 	};
 
 	const handleCompleteModifyPost = () => {
-		handleModifyPost(title, desc);
+		handleModifyPost({ id, title, desc });
 		setEdit(false);
 	};
 
