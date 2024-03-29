@@ -6,6 +6,7 @@ import { Button, Input, message } from 'antd';
 import * as S from '../style';
 
 const Loading = lazy(() => import('@components/common/loading'));
+const CommentComp = lazy(() => import('@components/features/comment'));
 
 const Detail = () => {
 	const navigate = useNavigate();
@@ -74,6 +75,7 @@ const Detail = () => {
 						)}
 						<Button onClick={handleDeletePost}>Delete Post</Button>
 					</S.ButtonArea>
+					<CommentComp />
 				</S.DetailContainer>
 			</S.PostsContainer>
 		</Suspense>

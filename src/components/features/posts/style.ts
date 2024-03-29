@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PostsContainer = styled.div<{ $detail?: boolean }>`
 	background-color: #f8f9fc;
-	height: ${(props) => props.$detail && 'calc(100% - 42px);'};
+	min-height: ${(props) => props.$detail && 'calc(100% - 42px);'};
 
 	padding-bottom: ${(props) => !props.$detail && '30px'};
 `;
@@ -45,7 +45,7 @@ export const CreateForm = styled.form`
 `;
 
 export const DetailContainer = styled.div`
-	padding: 30px 30%;
+	padding: 30px 15%;
 
 	& hr {
 		margin-top: 20px;
