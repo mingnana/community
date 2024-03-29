@@ -1,17 +1,35 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IUserInfo } from '@interfaces/auth';
 import { Button, Input, message } from 'antd';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import { useCreatePost } from '@/api/post';
 
+import 'firebase/auth';
+import { app } from '../../../../../config';
 import * as S from '../style';
 
 const Login = () => {
 	const [title, setTitle] = useState('');
 	const [desc, setDesc] = useState('');
+	const [user, setUser] = useState<IUserInfo | undefined>();
+
 	const { mutate } = useCreatePost();
 
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		const auth = getAuth(app);
+
+		const unsubscribe = onAuthStateChanged(auth, (user) => {
+			if (user) {
+				setUser({ email: user.email });
+			}
+		});
+
+		return () => unsubscribe();
+	}, []);
 
 	const onSubmit = useCallback(
 		async (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,6 +38,7 @@ const Login = () => {
 				{
 					title,
 					desc,
+					user: user?.email ?? '',
 				},
 				{
 					onSuccess: () => {
@@ -34,9 +53,11 @@ const Login = () => {
 				},
 			);
 		},
-		[mutate, title, desc, navigate],
+		[mutate, title, desc, user, navigate],
 	);
-
+	if (!user) {
+		return;
+	}
 	return (
 		<S.PostsContainer $detail={true}>
 			<S.PostsTitle>

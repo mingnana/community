@@ -70,7 +70,7 @@ export const LoginWrapper = styled.div`
 	justify-content: center;
 `;
 export const LoginContainer = styled.div`
-	width: 20%;
+	width: 25%;
 	padding-bottom: 20px;
 	border-radius: 10px;
 	background-color: #fff;
