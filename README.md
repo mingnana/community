@@ -53,8 +53,9 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 
 
 ```
-- 자신이 작성한 게시글/댓글일 경우에만 수정/삭제 버튼 활성화
 - 글 수정/삭제, 댓글 추가 가능
+- firebase onAuthStateChanged 함수 사용하여 사용자 정보를 동적으로 가져와 활용
+- 자신이 작성한 게시글/댓글일 경우에만 수정/삭제 버튼 활성화
 - 글 수정 및 댓글 추가시 react-query의 invalidateQueries 메서드 사용하여 자동으로 retch 되도록 구현
 ```
 ![](https://github.com/mingnana/community/assets/96216178/7ab2b503-023f-4013-acc5-aedeb1018410)
