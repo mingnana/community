@@ -33,13 +33,7 @@ const Posts = () => {
 		<S.PostsContainer>
 			<S.PostsTitle>
 				<h3>Dashboard</h3>
-				<Button
-					onClick={() => {
-						HandleCreatePost();
-					}}
-				>
-					Create Posts
-				</Button>
+				<Button onClick={HandleCreatePost}>Create Posts</Button>
 			</S.PostsTitle>
 			<S.CardContainer>
 				{data.map((data) => (
