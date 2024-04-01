@@ -18,12 +18,12 @@ export const COMMENT_API = {
 		const { data } = await axiosInstance.post('/comments', request);
 		return data;
 	},
-	putComment: (id: string) => async (request: CommentsProps) => {
-		const { data } = await axiosInstance.put(`/comments/${id}`, request);
+	putComment: async (request: CommentsProps) => {
+		const { data } = await axiosInstance.put(`/comments/${request.id}`, request);
 		return data;
 	},
-	deleteComment: async (id: string) => {
-		const { data } = await axiosInstance.delete(`/comments/${id}`);
+	deleteComment: async (request: CommentsProps) => {
+		const { data } = await axiosInstance.delete(`/comments/${request.id}`);
 		return data;
 	},
 };
@@ -37,7 +37,7 @@ export const useGetCommentById = (id: string = '') => {
 
 export const useCreateComment = () => {
 	const queryClient = useQueryClient();
-	return useMutation<CommentsProps, Error, CommentsProps>({
+	const { mutate: createCreate } = useMutation<CommentsProps, Error, CommentsProps>({
 		mutationFn: COMMENT_API.postComment,
 		onSuccess: (_res, variables) => {
 			message.success('Create Comment Successful!😄');
@@ -47,20 +47,28 @@ export const useCreateComment = () => {
 			message.error('Failed to Create Comment. Please try again later.😢');
 		},
 	});
+	return { createCreate };
 };
 
-export const usePutComment = (id: string = '') => {
+export const usePutComment = () => {
+	const queryClient = useQueryClient();
 	const { mutate: putComment } = useMutation<CommentsProps, Error, CommentsProps>({
-		mutationFn: COMMENT_API.putComment(id),
+		mutationFn: COMMENT_API.putComment,
+		onSuccess: (_res, variables) => {
+			message.success('Modify Comment Successful!😄');
+			queryClient.invalidateQueries({ queryKey: ['comment', variables.postId] });
+		},
+		onError: () => {
+			message.error('Failed to Modify Comment. Please try again later.😢');
+		},
 	});
-	return putComment;
+	return { putComment };
 };
 
-export const useDeleteComment = (id: string = '') => {
-	console.log('-----', id);
+export const useDeleteComment = () => {
 	const queryClient = useQueryClient();
 	const { mutate: deleteComment } = useMutation<CommentsProps, Error, CommentsProps>({
-		mutationFn: () => COMMENT_API.deleteComment(id),
+		mutationFn: COMMENT_API.deleteComment,
 		onSuccess: (_res, variables) => {
 			message.success('Create Comment Successful!😄');
 			queryClient.invalidateQueries({ queryKey: ['comment', variables.postId] });
@@ -69,5 +77,5 @@ export const useDeleteComment = (id: string = '') => {
 			message.error('Failed to delete the Comment. Please try again later. 😢');
 		},
 	});
-	return deleteComment;
+	return { deleteComment };
 };
