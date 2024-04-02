@@ -55,6 +55,7 @@ export const InputContainer = styled.div`
 	border: 1px solid #aaa;
 	border-radius: 5px;
 	padding: 3px 10px 3px 5px;
+	margin-top: 5px;
 	& input {
 		border: none;
 		&:focus {
