@@ -78,7 +78,8 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
     - String' 형식에 호출 시그니처가 없습니다.
     - 새로운 상태값을 전달하여 상태를 업데이트해야하기 때문에 < setCommentValue: React.Dispatch<React.SetStateAction<string>>; > 로 사용해야함
     - 다양한 데이터 유형에 대해 작동할 수 있도록 유연성을 제공하기 위해 React.SetStateAction<T> 제네릭 사용
-
+📌 함수 인자 구조 분해 문법 이슈
+    - 인자값을 받아올 경우 타입이 부합하지 않아 에러가 종종 남. interface 객체 내 하나의 속성을 가져오려면 반드시 구조분해 문법을 사용하여 해당 속성 추출해야함
 📌 코드 포맷팅
     - useSetRecoilState 함수를 사용하여 내부 값이 변경될때마다 상태업데이트를 효율적으로 처리하고, 의도를 명확하게 할수있음
 📌 style - antd 라이브러리 활용
