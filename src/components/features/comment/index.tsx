@@ -1,32 +1,36 @@
-import { useCallback, useEffect, useState } from 'react';
-import { CiEdit } from 'react-icons/ci';
-import { IoIosAddCircle, IoIosTrash } from 'react-icons/io';
+import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetchCommentById } from '@hooks/useComment';
-import { IUserInfo } from '@interfaces/auth';
-import { Input } from 'antd';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-import { useCreateComment } from '@/api/comment';
+import { useCreateComment, useDeleteComment } from '@/api/comment';
 import Loading from '@/components/common/loading';
+import CommentCreateInput from '@/components/features/comment/createInput';
+import { useFirebaseAuth } from '@/hooks/useFirebaseAuth';
 
-import 'firebase/auth';
-import { app } from '../../../../config';
+import CommentItem from './item';
 import * as S from './style';
 const Comment = () => {
 	const { id } = useParams();
-	const [commentValue, setCommentValue] = useState('');
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [, setEditComment] = useState('');
-	const [user, setUser] = useState<IUserInfo | undefined>();
-	const [edit] = useState(false);
-	const { mutate } = useCreateComment();
 	const { comment, isLoading } = useFetchCommentById(id);
+	const [commentValue, setCommentValue] = useState('');
+	const { user } = useFirebaseAuth();
+	const { createCreate } = useCreateComment();
+	const { deleteComment } = useDeleteComment();
 
-	// 삭제로직 작업중
+	// 댓글 삭제
+	const handleDeleteComment = useCallback(
+		(commentId: string | undefined) => {
+			deleteComment({
+				id: commentId,
+				postId: id,
+			});
+		},
+		[deleteComment, id],
+	);
 
+	// 댓글 추가
 	const handleCreateComment = useCallback(() => {
-		mutate(
+		createCreate(
 			{
 				postId: id,
 				commentValue,
@@ -38,19 +42,7 @@ const Comment = () => {
 				},
 			},
 		);
-	}, [mutate, commentValue, user, id]);
-
-	useEffect(() => {
-		const auth = getAuth(app);
-
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			if (user) {
-				setUser({ email: user.email });
-			}
-		});
-
-		return () => unsubscribe();
-	}, []);
+	}, [createCreate, commentValue, user, id]);
 
 	if (isLoading || !comment) {
 		return <Loading />;
@@ -67,59 +59,25 @@ const Comment = () => {
 					<S.TotalComment>
 						Total comment :<strong>{comment.length}</strong>
 					</S.TotalComment>
-
 					{comment.map((data, index) => (
-						<S.DetailArea key={data.id}>
-							<h5>{data.user}</h5>
-							<S.CommentInput $isLastItem={index === comment.length - 1}>
-								{edit ? (
-									<>
-										<Input
-											type='text'
-											placeholder='comment'
-											autoComplete='comment'
-											value={data.commentValue}
-											onChange={(e) => setEditComment(e.target.value)}
-										/>
-									</>
-								) : (
-									<div>{data.commentValue}</div>
-								)}
-								{user.email === data.user && (
-									<S.IconArea>
-										<span
-										//  onClick={() => handleEdit(data.postId)}
-										>
-											<CiEdit size={20} />
-										</span>
-										<span
-										// onClick={() => {
-										// 	handleDelete(data?.postId);
-										// }}
-										>
-											<IoIosTrash size={20} />
-										</span>
-									</S.IconArea>
-								)}
-							</S.CommentInput>
-						</S.DetailArea>
+						<CommentItem
+							key={data.id}
+							data={data}
+							user={user}
+							handleDeleteComment={handleDeleteComment}
+							isLastItem={index === comment.length - 1}
+						/>
 					))}
 				</S.DetailContainer>
 			) : (
 				<S.EmptyComment>No comments.</S.EmptyComment>
 			)}
-
 			<hr />
-			<S.InputContainer>
-				<Input value={commentValue} onChange={(e) => setCommentValue(e.target.value)} />
-				<span
-					onClick={() => {
-						handleCreateComment;
-					}}
-				>
-					<IoIosAddCircle size={20} />
-				</span>
-			</S.InputContainer>
+			<CommentCreateInput
+				commentValue={commentValue}
+				setCommentValue={setCommentValue}
+				handleCreateComment={handleCreateComment}
+			/>
 		</S.CommentContainer>
 	);
 };

@@ -12,14 +12,13 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 
 -   [x] **형상관리 및 db**
 
- <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Json Server-000?style=for-the-badge&logo=JSON&logoColor=white">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Json Server-000?style=for-the-badge&logo=JSON&logoColor=white">
 
 -   [x] **Front-end**
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
 <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white"> <img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=React Query&logoColor=white"> <img src="https://img.shields.io/badge/Recoil-3578E5?style=for-the-badge&logo=Recoil&logoColor=white"> <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled components&logoColor=white"/>
 <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"/><br/> <br/>
-
 
 ## 📌구현 사항
 
@@ -41,6 +40,7 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 - Private Router 사용하여 인증된 사용자만 접근할 수 있는 경로 분리
 - firebase api 키값 환경변수로 분리하여 보안 강화
 ```
+
 ![](https://github.com/mingnana/community/assets/96216178/d6309e13-ee47-45da-bf5a-e47c1898f88d)
 ![](https://github.com/mingnana/community/assets/96216178/8e9269ce-0584-4647-af00-ab65cb895708)
 
@@ -49,8 +49,8 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 - axiox Instance 사용하여 요청 및 응답에 대한 인터셉터 구현
 - 페이지 및 데이터 로딩시 보여질 로딩 컴포넌트 antd component 사용하여 구현
 ```
-![](https://github.com/mingnana/community/assets/96216178/766e1080-b0c6-407d-bdf6-5893c565bd9e)
 
+![](https://github.com/mingnana/community/assets/96216178/766e1080-b0c6-407d-bdf6-5893c565bd9e)
 
 ```
 - 글 수정/삭제, 댓글 추가 가능
@@ -58,8 +58,8 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 - 자신이 작성한 게시글/댓글일 경우에만 수정/삭제 버튼 활성화
 - 글 수정 및 댓글 추가시 react-query의 invalidateQueries 메서드 사용하여 자동으로 retch 되도록 구현
 ```
-![](https://github.com/mingnana/community/assets/96216178/7ab2b503-023f-4013-acc5-aedeb1018410)
 
+![](https://github.com/mingnana/community/assets/96216178/7ab2b503-023f-4013-acc5-aedeb1018410)
 
 ## 📜 이슈 및 리뷰 사항
 
@@ -74,6 +74,12 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 📌 atom을 사용할 경우 새로고침시 데이터 없어지는 이슈
     - atom의 경우, 일반적으로 메모리에 저장되어 있어 새로고침이나 페이지 이동과 같은 브라우저 변화는 메모리 상태를 초기화 시킴. 따라서 recoilPersist를 사용하여 상태를 유지해야함
     - selector의 경우 자체적으로 캐싱 및 메모이제이션을 수행하여 상태를 유지시킴
+📌 useEate를 props로 전달할 때 타입 이슈
+    - String' 형식에 호출 시그니처가 없습니다.
+    - 새로운 상태값을 전달하여 상태를 업데이트해야하기 때문에 < setCommentValue: React.Dispatch<React.SetStateAction<string>>; > 로 사용해야함
+    - 다양한 데이터 유형에 대해 작동할 수 있도록 유연성을 제공하기 위해 React.SetStateAction<T> 제네릭 사용
+📌 함수 인자 구조 분해 문법 이슈
+    - 인자값을 받아올 경우 타입이 부합하지 않아 에러가 종종 남. interface 객체 내 하나의 속성을 가져오려면 반드시 구조분해 문법을 사용하여 해당 속성 추출해야함
 📌 코드 포맷팅
     - useSetRecoilState 함수를 사용하여 내부 값이 변경될때마다 상태업데이트를 효율적으로 처리하고, 의도를 명확하게 할수있음
 📌 style - antd 라이브러리 활용

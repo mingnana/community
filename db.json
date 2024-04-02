@@ -7,12 +7,6 @@
       "user": "test2@test.com"
     },
     {
-      "id": "2d37",
-      "title": "test",
-      "desc": "test2",
-      "user": "test@test.com"
-    },
-    {
       "title": "test3",
       "desc": "3",
       "id": "06d3",
@@ -108,97 +102,73 @@
     {
       "id": "ffc5",
       "postId": "1455",
-      "commentValue": "1212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212121212",
-      "user": "test@test.com"
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
+      "user": "test2@test.com"
     },
     {
       "id": "93cc",
       "postId": "1455",
-      "commentValue": "1212",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "7a3b",
       "postId": "1455",
-      "commentValue": "1212",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "758a",
       "postId": "1455",
-      "commentValue": "1212",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "6c60",
       "postId": "1455",
-      "commentValue": "ㅁㄴㅁㄴ",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "de43",
       "postId": "1455",
-      "commentValue": "111",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "b2a3",
       "postId": "1455",
-      "commentValue": "222",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "6054",
       "postId": "1455",
-      "commentValue": "333",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "05bd",
       "postId": "1455",
-      "commentValue": "444",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "1717",
       "postId": "1455",
-      "commentValue": "555",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
       "id": "99b8",
       "postId": "1455",
-      "commentValue": "666",
+      "commentValue": "댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. 댓글 테스트입니다. ",
       "user": "test@test.com"
     },
     {
-      "id": "63f8",
+      "id": "75c1",
       "postId": "1455",
-      "commentValue": "777",
-      "user": "test@test.com"
-    },
-    {
-      "id": "1f09",
-      "postId": "1455",
-      "commentValue": "888",
-      "user": "test@test.com"
-    },
-    {
-      "id": "2e70",
-      "postId": "1455",
-      "commentValue": "999",
-      "user": "test@test.com"
-    },
-    {
-      "id": "8825",
-      "postId": "1455",
-      "commentValue": "10",
-      "user": "test@test.com"
-    },
-    {
-      "id": "d2e5",
-      "postId": "1455",
-      "commentValue": "10",
+      "commentValue": "2323",
       "user": "test@test.com"
     }
   ]
