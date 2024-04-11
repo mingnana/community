@@ -1,14 +1,13 @@
 import { lazy, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Card } from 'antd';
+import { Card } from 'antd';
 
 import { useGetPostList } from '@/api/post';
 
+import { PostsHeader } from './header';
 import * as S from './style';
 
-//----------------------------------------------------------------- Component
 const Loading = lazy(() => import('@components/common/loading'));
-//----------------------------------------------------------------- Component
 
 const Posts = () => {
 	const navigate = useNavigate();
@@ -21,7 +20,7 @@ const Posts = () => {
 		[navigate],
 	);
 
-	const HandleCreatePost = useCallback(() => {
+	const handleCreatePost = useCallback(() => {
 		navigate('/posts/create');
 	}, [navigate]);
 
@@ -31,16 +30,7 @@ const Posts = () => {
 
 	return (
 		<S.PostsContainer>
-			<S.PostsTitle>
-				<h3>Dashboard</h3>
-				<Button
-					onClick={() => {
-						HandleCreatePost();
-					}}
-				>
-					Create Posts
-				</Button>
-			</S.PostsTitle>
+			<PostsHeader handleCreatePost={handleCreatePost} />
 			<S.CardContainer>
 				{data.map((data) => (
 					<Card

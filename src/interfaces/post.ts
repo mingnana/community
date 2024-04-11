@@ -4,7 +4,9 @@ export interface PostsProps {
 	title?: string;
 	user?: string;
 }
-
+export interface IPostCreateProps {
+	handleCreatePost: () => void;
+}
 export interface QueryResponse {
 	data: PostsProps[];
 	isLoading: boolean;
