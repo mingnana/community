@@ -62,7 +62,6 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 ![](https://github.com/mingnana/community/assets/96216178/5e951069-0a44-4930-b52c-630b57e5e32a)
 ![](https://github.com/mingnana/community/assets/96216178/98e1efee-6fca-48d3-8557-856ebcb0086c)
 
-
 ## 📜 이슈 및 리뷰 사항
 
 ```
@@ -89,7 +88,7 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 📌 '(commentId: string | undefined, inputValue: string) => void' 형식은 '(commentId?: string | undefined, inputValue?: string | undefined) => void' 형식에 할당할 수 없습니다.
     - 함수의 타입이 인터페이스에서 정의된 타입과 일치하지 않는다는 것을 나타냄
     - 해당 함수의 매개변수 타입과 인터페이스에서 정의한 타입을 일치시켜야 함
-    - 인터페이스에서는 (commentId?: string, inputValue?: string) => void
-로 지정했으니 함수의 매개변수 타입도 동일하게 일치시켜야함
-
+    - 인터페이스에서는 (commentId?: string, inputValue?: string) => void로 지정했으니 함수의 매개변수 타입도 동일하게 일치시켜야함
+📌 json-server를 사용하여 fake 서버를 만들었으나, 배포했더니 local 서버를 참조하고 있어 데이터베이스가 뜨지 않는 대형 이슈 발생..!
+    - Glitch 사용하여 배포단에서도 json 서버를 사용할수있도록 수정
 ```
