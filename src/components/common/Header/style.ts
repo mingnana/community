@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 // 회원가입
 export const HeaderContainer = styled.div`
-	color: #fff;
 	display: flex;
 	justify-content: space-between;
 	padding: 10px 30px;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const LayoutWrapper = styled.div`
 	background: linear-gradient(to bottom, #ffbb55, #ff7f00);
 
-	height: 100vh;
+	min-height: 100vh;
 `;
 
 export const LayoutCenter = styled.div`

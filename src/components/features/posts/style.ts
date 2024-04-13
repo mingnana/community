@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 
-export const PostsContainer = styled.div<{ $detail?: boolean }>`
-	background-color: #f8f9fc;
-	min-height: ${(props) => props.$detail && 'calc(100% - 42px);'};
-
-	padding-bottom: ${(props) => !props.$detail && '30px'};
+export const PostsContainer = styled.div`
+	padding: 3vw;
 `;
+
 export const PostsTitle = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 20px;
+	padding-bottom: 30px;
 `;
 
 export const CardContainer = styled.div`
@@ -26,42 +24,52 @@ export const CardContainer = styled.div`
 `;
 
 export const CreateForm = styled.form`
-	padding: 20px;
 	& input {
 		margin-bottom: 15px;
 	}
 	& button {
 		width: 100%;
-		margin-top: 30px;
+		height: 40px;
+		margin-top: 50px;
 		background-color: #ffaa11;
 		border: none !important;
 		color: #fff;
 		&:hover {
-			background-color: #ffaa11 !important;
-			color: #000 !important;
+			background-color: #ff7f00 !important;
+			color: #fff !important;
 			border: none !important;
 		}
 	}
 `;
 
 export const DetailContainer = styled.div`
-	padding: 30px 15%;
+	background-color: #fff;
+	width: 70vw;
+	padding: 5vw;
+	margin: 0 auto;
+	border-radius: 8px;
 
 	& hr {
-		margin-top: 10px;
+		margin: 20px 0;
 	}
 `;
 export const TitleArea = styled.div`
-	background-color: #fff;
-	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 `;
+export const WriterArea = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 5px;
+	& svg {
+		filter: invert(0.8);
+	}
+`;
 export const DescArea = styled.div`
 	min-height: 150px;
-	background-color: #fff;
-	padding: 10px;
+	font-size: 14px;
 `;
 
 export const ButtonArea = styled.div<{ $edit?: boolean }>`
