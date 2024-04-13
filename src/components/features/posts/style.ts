@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 
-export const PostsContainer = styled.div<{ $detail?: boolean }>`
-	padding: 30px 0;
-	min-height: ${(props) => props.$detail && 'calc(100% - 42px);'};
-
-	padding-bottom: ${(props) => !props.$detail && '30px'};
+export const PostsContainer = styled.div`
+	padding: 3vw;
 `;
+
 export const PostsTitle = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0px 20px 20px;
+	padding-bottom: 30px;
 `;
 
 export const CardContainer = styled.div`
@@ -26,19 +24,19 @@ export const CardContainer = styled.div`
 `;
 
 export const CreateForm = styled.form`
-	padding: 20px;
 	& input {
 		margin-bottom: 15px;
 	}
 	& button {
 		width: 100%;
-		margin-top: 30px;
+		height: 40px;
+		margin-top: 50px;
 		background-color: #ffaa11;
 		border: none !important;
 		color: #fff;
 		&:hover {
-			background-color: #ffaa11 !important;
-			color: #000 !important;
+			background-color: #ff7f00 !important;
+			color: #fff !important;
 			border: none !important;
 		}
 	}

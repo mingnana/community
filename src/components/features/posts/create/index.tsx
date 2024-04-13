@@ -59,29 +59,33 @@ const Login = () => {
 		return;
 	}
 	return (
-		<S.PostsContainer $detail={true}>
-			<S.PostsTitle>
-				<h3>Welcome!</h3>
-			</S.PostsTitle>
-			<S.CreateForm onSubmit={onSubmit}>
-				<Input
-					type='text'
-					placeholder='Title'
-					autoComplete='title'
-					value={title}
-					onChange={(e) => setTitle(e.target.value)}
-				/>
-				<Input.TextArea
-					placeholder='contents'
-					autoComplete='contents'
-					value={desc}
-					onChange={(e) => setDesc(e.target.value)}
-					maxLength={1000}
-					showCount
-					style={{ height: 250, resize: 'none' }}
-				/>
-				<Button htmlType='submit'>Create!</Button>
-			</S.CreateForm>
+		<S.PostsContainer>
+			<S.DetailContainer>
+				<S.PostsTitle>
+					<h3>Create Post</h3>
+				</S.PostsTitle>
+				<S.CreateForm onSubmit={onSubmit}>
+					<Input
+						type='text'
+						placeholder='Title'
+						autoComplete='title'
+						value={title}
+						onChange={(e) => setTitle(e.target.value)}
+						required
+					/>
+					<Input.TextArea
+						placeholder='contents'
+						autoComplete='contents'
+						value={desc}
+						onChange={(e) => setDesc(e.target.value)}
+						maxLength={1000}
+						showCount
+						style={{ height: 250, resize: 'none' }}
+						required
+					/>
+					<Button htmlType='submit'>Create!</Button>
+				</S.CreateForm>
+			</S.DetailContainer>
 		</S.PostsContainer>
 	);
 };
