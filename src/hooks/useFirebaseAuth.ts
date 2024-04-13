@@ -22,6 +22,7 @@ export const useFirebaseAuth = () => {
 				setUser({ email: user.email });
 			} else if (!user && location.pathname !== '/') {
 				message.error('로그인이 필요합니다! 😢');
+				localStorage.removeItem('access-token');
 				setTimeout(() => {
 					navigate('/');
 				}, 500);
