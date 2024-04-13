@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { FaRegMessage } from 'react-icons/fa6';
 import { useParams } from 'react-router-dom';
 import { useFetchCommentById } from '@hooks/useComment';
 
@@ -70,7 +71,8 @@ const Comment = () => {
 			{comment.length ? (
 				<S.DetailContainer>
 					<S.TotalComment>
-						Total comment :<strong>{comment.length}</strong>
+						<FaRegMessage size='15' />
+						<strong>{comment.length}</strong>
 					</S.TotalComment>
 					{comment.map((data, index) => (
 						<CommentItem
@@ -86,7 +88,6 @@ const Comment = () => {
 			) : (
 				<S.EmptyComment>No comments.</S.EmptyComment>
 			)}
-			<hr />
 			<CommentCreateInput
 				commentValue={commentValue}
 				setCommentValue={setCommentValue}

@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
+import { IoPersonCircleOutline } from 'react-icons/io5';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchPostById, usePostActions } from '@hooks/usePost';
 import { IUserInfo } from '@interfaces/auth';
@@ -73,7 +74,10 @@ const Detail = () => {
 						) : (
 							<h2>{post.title}</h2>
 						)}
-						<span>작성자 : {post.user}</span>
+						<S.WriterArea>
+							<IoPersonCircleOutline size='30' />
+							<span>{post.user}</span>
+						</S.WriterArea>
 					</S.TitleArea>
 					<hr />
 					{edit ? (
