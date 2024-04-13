@@ -66,7 +66,7 @@ const Detail = () => {
 
 	return (
 		<Suspense fallback={<Loading />}>
-			<S.PostsContainer $detail={true}>
+			<S.PostsContainer>
 				<S.DetailContainer>
 					<S.TitleArea>
 						{edit ? (
