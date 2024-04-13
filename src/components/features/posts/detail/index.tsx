@@ -60,12 +60,6 @@ const Detail = () => {
 			navigate('/');
 		}, 500);
 	}
-	if (!user) {
-		message.error('로그인이 필요합니다! 😢');
-		setTimeout(() => {
-			navigate('/');
-		}, 500);
-	}
 
 	return (
 		<Suspense fallback={<Loading />}>
