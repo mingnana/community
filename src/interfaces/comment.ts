@@ -12,6 +12,7 @@ export interface ICommentItemProps {
 	data: CommentsProps;
 	user?: IUserInfo | undefined;
 	handleDeleteComment: (commentId?: string) => void;
+	handleEditComment: (commentId?: string, inputValue?: string) => void;
 	isLastItem: boolean;
 }
 

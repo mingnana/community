@@ -1,8 +1,9 @@
 import { useCallback, useState } from 'react';
+import { FaRegMessage } from 'react-icons/fa6';
 import { useParams } from 'react-router-dom';
 import { useFetchCommentById } from '@hooks/useComment';
 
-import { useCreateComment, useDeleteComment } from '@/api/comment';
+import { useCreateComment, useDeleteComment, usePutComment } from '@/api/comment';
 import Loading from '@/components/common/loading';
 import CommentCreateInput from '@/components/features/comment/createInput';
 import { useFirebaseAuth } from '@/hooks/useFirebaseAuth';
@@ -16,7 +17,20 @@ const Comment = () => {
 	const { user } = useFirebaseAuth();
 	const { createCreate } = useCreateComment();
 	const { deleteComment } = useDeleteComment();
+	const { putComment } = usePutComment();
 
+	// 댓글 수정
+	const handleEditComment = useCallback(
+		(commentId?: string, inputValue?: string) => {
+			putComment({
+				id: commentId,
+				postId: id,
+				commentValue: inputValue,
+				user: user?.email ?? '',
+			});
+		},
+		[putComment, user, id],
+	);
 	// 댓글 삭제
 	const handleDeleteComment = useCallback(
 		(commentId: string | undefined) => {
@@ -57,7 +71,8 @@ const Comment = () => {
 			{comment.length ? (
 				<S.DetailContainer>
 					<S.TotalComment>
-						Total comment :<strong>{comment.length}</strong>
+						<FaRegMessage size='15' />
+						<strong>{comment.length}</strong>
 					</S.TotalComment>
 					{comment.map((data, index) => (
 						<CommentItem
@@ -65,6 +80,7 @@ const Comment = () => {
 							data={data}
 							user={user}
 							handleDeleteComment={handleDeleteComment}
+							handleEditComment={handleEditComment}
 							isLastItem={index === comment.length - 1}
 						/>
 					))}
@@ -72,7 +88,6 @@ const Comment = () => {
 			) : (
 				<S.EmptyComment>No comments.</S.EmptyComment>
 			)}
-			<hr />
 			<CommentCreateInput
 				commentValue={commentValue}
 				setCommentValue={setCommentValue}

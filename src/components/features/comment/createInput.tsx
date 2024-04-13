@@ -1,4 +1,3 @@
-// InputContainer.js
 import { IoIosAddCircle } from 'react-icons/io';
 import { Input } from 'antd';
 

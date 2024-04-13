@@ -64,6 +64,8 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
 ## 📜 이슈 및 리뷰 사항
 
 ```
+📌 style - antd 라이브러리 활용
+    - 직접 UI를 디자인하기보다는, 기존에 잘 작성되어 있는 Antd component 사용하여 style props을 재정의해 필요에 따라 custom 하여 구현
 📌 Warning: Received `true` for a non-boolean attribute `signup`.
     - react dom에서 해당 속성을 인지하지 못하기 때문에 나오는 이슈
     - prefix 사용 : styled-components를 사용할때 prefix를 필터링해서 기본이 되는 dom으로 props 전달을 방지함
@@ -82,6 +84,10 @@ React + TypeScript를 사용해서 만드는 커뮤니티 사이트
     - 인자값을 받아올 경우 타입이 부합하지 않아 에러가 종종 남. interface 객체 내 하나의 속성을 가져오려면 반드시 구조분해 문법을 사용하여 해당 속성 추출해야함
 📌 코드 포맷팅
     - useSetRecoilState 함수를 사용하여 내부 값이 변경될때마다 상태업데이트를 효율적으로 처리하고, 의도를 명확하게 할수있음
-📌 style - antd 라이브러리 활용
-    - 직접 UI를 디자인하기보다는, 기존에 잘 작성되어 있는 Antd component 사용하여 style props을 재정의해 필요에 따라 custom 하여 구현
+📌 '(commentId: string | undefined, inputValue: string) => void' 형식은 '(commentId?: string | undefined, inputValue?: string | undefined) => void' 형식에 할당할 수 없습니다.
+    - 함수의 타입이 인터페이스에서 정의된 타입과 일치하지 않는다는 것을 나타냄
+    - 해당 함수의 매개변수 타입과 인터페이스에서 정의한 타입을 일치시켜야 함
+    - 인터페이스에서는 (commentId?: string, inputValue?: string) => void
+로 지정했으니 함수의 매개변수 타입도 동일하게 일치시켜야함
+
 ```
