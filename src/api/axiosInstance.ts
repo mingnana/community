@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosRequestConfig = {
-	baseURL: `http://localhost:8080`,
+	baseURL: 'https://community-server-three.vercel.app/',
 	timeout: 5000,
 	headers: {
 		'Content-Type': 'application/json',
