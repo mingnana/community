@@ -62,10 +62,6 @@ const Comment = () => {
 		return <Loading />;
 	}
 
-	if (!user) {
-		return;
-	}
-
 	return (
 		<S.CommentContainer>
 			{comment.length ? (

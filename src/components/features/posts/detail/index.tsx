@@ -61,7 +61,10 @@ const Detail = () => {
 		}, 500);
 	}
 	if (!user) {
-		return;
+		message.error('로그인이 필요합니다! 😢');
+		setTimeout(() => {
+			navigate('/');
+		}, 500);
 	}
 
 	return (
@@ -92,7 +95,7 @@ const Detail = () => {
 						<S.DescArea>{post.desc}</S.DescArea>
 					)}
 					<S.ButtonArea $edit={edit}>
-						{user.email === post.user && (
+						{user?.email === post.user && (
 							<>
 								{edit ? (
 									<>

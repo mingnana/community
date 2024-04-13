@@ -18,7 +18,6 @@ const Login = () => {
 	const { mutate } = useCreatePost();
 
 	const navigate = useNavigate();
-
 	useEffect(() => {
 		const auth = getAuth(app);
 
@@ -56,7 +55,10 @@ const Login = () => {
 		[mutate, title, desc, user, navigate],
 	);
 	if (!user) {
-		return;
+		message.error('로그인이 필요합니다! 😢');
+		setTimeout(() => {
+			navigate('/');
+		}, 500);
 	}
 	return (
 		<S.PostsContainer>
